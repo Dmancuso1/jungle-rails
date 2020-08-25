@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
       test_user= User.create(
         name: "Charles",
         email: "example@example.com",
-        password: "word")
+        password: "testpassword")
       expect(User.find_by_email(test_user.email)).to be_truthy
     end
 
@@ -36,7 +36,7 @@ RSpec.describe User, type: :model do
     it "should find email regardless of case" do
       test_user= User.create(
         name: "Charles",
-        email: "examplE@example.com",
+        email: "example@example.com",
         password: "testpassword")
       expect(User.authenticate_with_credentials("examplE@example.COM", test_user.password)).to be_truthy
     end

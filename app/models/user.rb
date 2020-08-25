@@ -13,9 +13,11 @@ class User < ActiveRecord::Base
                        :length => {:within => 6..40},
                        :on => :update
 
+
+
   def self.authenticate_with_credentials(email, password)
     stripped = email.strip
-    user = User.find_by_email(stripped)
+    user = User.find_by_email(stripped.downcase)
     if user && user.authenticate(password)
       return user
     else
